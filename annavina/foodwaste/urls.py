@@ -11,4 +11,5 @@ urlpatterns = [
     path('foodmarts/', views.foodmart_list, name='foodmart_list'),
     path('foodmarts/add/', views.foodmart_add, name='foodmart_add'),
     path('foodmarts/<int:pk>/edit/', views.foodmart_edit, name='foodmart_edit'),
+    path('map', views.map, name='map'),
 ]
