@@ -1,4 +1,5 @@
-{% extends 'base.html' %} {% load static %} {% block links %}
+{% extends 'base.html' %} 
+{% load static %} {% block links %}
 <link rel="stylesheet" href="{% static 'map.css'%}">
 <link
   rel="stylesheet"
@@ -9,6 +10,15 @@
 />
 {% endblock %} {% block content %}
 <div id="map" class="h-screen lg:h-[85vh] z-[99]"></div>
+<!-- <h1>{{foodmarts}}</h1> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" integrity="sha512-puJW3E/qXDqYp9IfhAI54BJEaWIfloJ7JWs7OeD5i6ruC9JZL1gERT1wjtwXFlh7CjE7ZJ+/vcRZRkIYIb6p4g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript">
+  var latlonarr = []
+  "{% for foodmart in foodmarts %}"
+  "console.log({{foodmart}})"
+  latlonarr.push({lat : "{{foodmart.lat}}",lon:"{{foodmart.lon}}",name : "{{foodmart.name}}",phone : "{{foodmart.phone_number}}"})
+  "{% endfor %}"
+  // console.log(latlonarr)
+</script>
 <script src="{% static 'map.js' %}"></script>
 {% endblock %}

@@ -120,7 +120,8 @@ def foodmart_edit(request, pk):
 
 
 def map(request):
-    return render(request,'map.html')
+    foodmarts = foodmart.objects.all()
+    return render(request,'map.html',{'foodmarts' : foodmarts})
 
 def about(request):
     return render(request,'about.html')

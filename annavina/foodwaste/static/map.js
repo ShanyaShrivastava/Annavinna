@@ -7,19 +7,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
 if (navigator.geolocation){
     navigator.geolocation.getCurrentPosition((position) => {
         const {latitude,longitude} = position.coords;
-        map.setView([latitude,longitude],25);
-        L.marker([latitude,longitude]).addTo(map).bindPopup(
-            L.popup({
-              maxWidth: 200,
-              minWidth: 100,
-              autoClose: false,
-              closeOnClick: true,
-              closeButton: true
-            }).setContent(
-              "Hello"
-            )
-          )
-          .openPopup();
+        map.setView([latitude,longitude],12);
     },(error) => {
         console.log(error)
     },{
@@ -28,3 +16,18 @@ if (navigator.geolocation){
         maximumAge : 0,
     })
 }
+
+latlonarr.forEach(elem => {
+    L.marker([elem.lat,elem.lon]).addTo(map).bindPopup(
+        L.popup({
+          maxWidth: 200,
+          minWidth: 100,
+          autoClose: false,
+          closeOnClick: true,
+          closeButton: true
+        }).setContent(
+           `<h1 class="font-semibold">${elem.name}</h1><a href="tel:${elem.phone}">${elem.phone}</a>`
+        )
+      )
+      .openPopup();
+})
