@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{%block content%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        
+        body {
+            background-color: black;
+        }
+        
+        #aboutUs {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        
+        #aboutUs img {
+            width: 400px;
+            margin: 20px;
+            border-radius: 10px;
+        }
+        
+        .content {
+            margin: 20px 0;
+        }
+        
+        .content h2 {
+            font-size: 50px;
+            color: #ffca70;
+        }
+        
+        .content h4 {
+            font-size: 20px;
+            color: #fff;
+            margin: 10px 0;
+        }
+        
+        .description {
+            color: black;
+            margin: 20px 0;
+            font-size: 18px;
+            line-height: 30px;
+            font-weight: 100;
+        }
+        
+        .btn {
+            font-weight: bold;
+            border: 2px solid #ffca70;
+            cursor: pointer;
+            padding: 10px 20px;
+            border-radius: 20px;
+            transition: all 0.4s;
+            background-color: #ffca70;
+        }
+        
+        .btn:hover {
+            border: 2px solid #ffca70;
+            
+            color: #ffca70;
+        }
+        
+        @media screen and (max-width: 790px) {
+            #aboutUs img {
+                width: 80%;
+            }
+        
+            #aboutUs {
+                grid-template-columns: 1fr;
+                place-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<section id="aboutUs">
+            <p class="description">
+                <Strong>Each day, 25,000 people, including more than 10,000 children, die from hunger and related causes.</Strong>
+                Welcome to Annavinna, where we're committed to revolutionizing how we handle food waste. At Annavinna, we believe that every meal counts, and so does every scrap of food. Our mission is simple yet profound: to reduce food waste and its environmental impact by providing innovative solutions for homes, businesses, and communities. We offer a range of services designed to make food waste management effortless and effective, whether through composting solutions, educational programs, or consulting services for businesses aiming to minimize their environmental footprint.
+    
+                Founded on the principles of sustainability and community, Annavinna is more than just a service provider; we're your partner in creating a greener future. By empowering individuals and organizations with the knowledge and tools to tackle food waste head-on, we aim to inspire lasting change. Join us in our journey towards a world where food is valued and waste is minimized, because together, we can make a significant difference for generations to come. Together, let's turn today's scraps into tomorrow's resources and build a healthier planet one meal at a time with Annavinna.
+            </p>
+            <button class="btn">Hire Me</button>
+        </div>
+    </section>
+
+</body>
+</html>
+  {% endblock %}
+

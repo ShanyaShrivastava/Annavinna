@@ -121,3 +121,6 @@ def foodmart_edit(request, pk):
 
 def map(request):
     return render(request,'map.html')
+
+def about(request):
+    return render(request,'about.html')
