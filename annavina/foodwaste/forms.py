@@ -57,7 +57,7 @@ class SignUpForm(UserCreationForm):
 class FoodmartForm(forms.ModelForm):
     class Meta:
         model = foodmart
-        fields = ['name', 'description', 'pincode']
+        fields = ['name', 'description', 'pincode','address','phone_number','quantity']
 
 
 class SearchFoodMartForm(forms.Form):

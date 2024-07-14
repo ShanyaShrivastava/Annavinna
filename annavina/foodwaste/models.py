@@ -9,6 +9,10 @@ class foodmart(models.Model):
     pincode=models.CharField(max_length=10)
     lat=models.CharField(max_length=20,null=True,blank=True)
     lon=models.CharField(max_length=20,null=True,blank=True)
+    address=models.CharField(max_length=100,null=False,blank=False)
+    phone_number = models.CharField(max_length=12)
+    quantity= models.CharField(max_length=12)
+    
     
     def save(self,*args, **kwargs):
         geolocator = Nominatim(user_agent="foodwaste")
