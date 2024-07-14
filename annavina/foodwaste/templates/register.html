@@ -1,0 +1,213 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+    <title>Multiple user login</title>
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        color: #333;
+        background-color: #f5f5f5;
+      }
+
+     .content {
+        padding: 0px 0;
+      }
+
+     .container {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+     .row {
+        margin: 0 -15px;
+      }
+
+     .col-md-6 {
+        padding: 0 15px;
+      }
+
+     .contents {
+        padding: 20px;
+      }
+
+     .form-block {
+        padding: 20px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+     .form-group {
+        margin-bottom: 20px;
+      }
+
+     .form-group label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+        color: #333;
+      }
+
+     .form-group input[type="text"],.form-group input[type="email"],.form-group input[type="password"] {
+        width: 90%;
+        height: 40px;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+      }
+
+     .form-group input[type="checkbox"] {
+        margin-top: 10px;
+      }
+
+     .control {
+        display: block;
+        position: relative;
+        padding-left: 30px;
+        cursor: pointer;
+      }
+
+     .control__indicator {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        height: 20px;
+        border: 1px solid #ccc;
+        border-radius: 50%;
+        background-color: #fff;
+      }
+
+     .control input[type="checkbox"] {
+        display: none;
+      }
+
+     .control input[type="checkbox"]:checked +.control__indicator {
+        background-color: #337ab7;
+        border-color: #337ab7;
+      }
+
+     .control input[type="checkbox"]:checked +.control__indicator:after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #fff;
+      }
+
+     .btn {
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #337ab7;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top:20px;
+      }
+
+     .btn:hover {
+        background-color: #23527c;
+      }
+
+     .text-error {
+        color: #red;
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-6 contents">
+            <div class="row justify-content-center">
+              <div class="col-md-12">
+                <div class="form-block">
+                  <div class="mb-4">
+                    <h1>User Registration page</h1>
+                  </div>
+                  <span class="mb-0 text-muted">
+                    {% if msg %}
+                      {{ msg | safe }}
+                    {% else %}
+                    
+                   {% endif %}
+                  </span>
+                  <form method="post">
+                    {% csrf_token %}
+                    <div class="form-group first">
+                      <label for="username">Username</label>
+                      {{ form.username }}
+                    </div>
+                    <div class="form-group first">
+                      <label for="email">Email</label>
+                      {{ form.email}}
+                    </div>
+                    <div class="form-group last mb-4">
+                      <label for="password">Password</label>
+                      {{ form.password1 }}
+                    </div>
+                    <div class="form-group last mb-4">
+                      <label for="password">confirm Password</label>
+                      {{ form.password2 }}
+                    </div>
+                    <div class="d-flex mb-5 align-items-center">
+                      <label class="control control--checkbox mb-0"><span class="caption">Admin</span>
+                        {{ form.is_admin }}
+                      <div class="control__indicator"></div>
+                      </label>
+                    </div>
+                    <div class="d-flex mb-5 align-items-center">
+                      <label class="control control--checkbox mb-0"><span class="caption">customer</span>
+                        {{ form.is_customer }}
+                      <div class="control__indicator"></div>
+                      </label>
+                    </div>
+                    <span class="text-error">{{ form.errors }}</span>
+                    <input type="submit" value="Register" class="btn btn-pill text-white btn-block btn-primary">
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <script>
+            if ("geolocation" in navigator) {
+              // Requesting the user's current position
+              navigator.geolocation.getCurrentPosition(function(position) {
+                // Success callback function
+                const latitude = position.coords.latitude;
+                const longitude = position.coords.longitude;
+                
+                // Logging the location to the console
+                console.log("Latitude:", latitude);
+                console.log("Longitude:", longitude);
+              }, function(error) {
+                // Error callback function (optional)
+                console.error("Error getting geolocation:", error);
+              });
+            } else {
+              console.log("Geolocation is not supported by this browser.");
+            }
+          </script>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

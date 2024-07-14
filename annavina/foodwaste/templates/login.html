@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Login</title>
+<style>
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    background-color: #f9f9f9;
+  }
+  
+  .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0 auto;
+  }
+  
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .col-md-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  
+  .contents {
+    padding: 20px;
+  }
+  
+  .form-block {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  label {
+    margin-bottom: 10px;
+  }
+  
+  input[type="checkbox"] {
+    margin-right: 7px;
+  }
+  
+  .control {
+    position: relative;
+    display: inline-block;
+    padding-left: 24px;
+    cursor: pointer;
+  }
+  
+  .control__indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+  }
+  
+  .control__indicator::after {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 12px;
+    height: 12px;
+    background-color: #337ab7;
+    border-radius: 50%;
+    display: none;
+  }
+  
+  .control input[type="checkbox"]:checked + .control__indicator::after {
+    display: block;
+  }
+  
+  .forgot-pass {
+    text-decoration: none;
+    color: #337ab7;
+  }
+  
+  .forgot-pass:hover {
+    color: #23527c;
+  }
+  
+  /* Button Styles */
+  
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.5;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .btn-primary {
+    background-color: #337ab7;
+    color: #fff;
+    border-color: #337ab7;
+  }
+  
+  .btn-primary:hover {
+    background-color: #23527c;
+    border-color: #23527c;
+  }
+  
+  .btn-block {
+    width: 100%;
+  }
+  
+  /* Added styles */
+  
+  .container {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .form-block {
+    background-color: #f7f7f7;
+  }
+  
+  .control__indicator {
+    border: 1px solid #ccc;
+  }
+  
+  .control input[type="checkbox"]:checked + .control__indicator::after {
+    background-color: #337ab7;
+  }
+  
+  .forgot-pass {
+    font-size: 14px;
+  }
+  
+  .btn-primary {
+    background-color: #337ab7;
+    border-color: #337ab7;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+  
+ .btn-primary:hover {
+    background-color: #23527c;
+    border-color: #23527c;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+</style>
+</head>
+<body>
+  <div class="content">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6 contents">
+          <div class="row justify-content-center">
+            <div class="col-md-12">
+              <div class="form-block">
+                <span class="mb-0 text-muted">
+                  {% if msg %}
+                    {{ msg }}
+                  {% endif %}
+                </span>
+                <form method="post">
+                  {% csrf_token %}
+                  {{ form.as_p }}
+                  <div class="d-flex mb-5 align-items-center">
+                    <label class="control control--checkbox mb-0 ">
+                      <span class="caption">Remember me</span>
+                      <input type="checkbox" checked="checked" />
+                    </label>
+                    <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span>
+                  </div>
+                  <input type="submit" value="Log In" class="btn btn-pill text-white btn-block btn-primary">
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
