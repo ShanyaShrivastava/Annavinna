@@ -117,3 +117,7 @@ def foodmart_edit(request, pk):
         form = FoodmartForm(instance=foodmart_instance)
     
     return render(request, 'foodmart_form.html', {'form': form})
+
+
+def map(request):
+    return render(request,'map.html')
