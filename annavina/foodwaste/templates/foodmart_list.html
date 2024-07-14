@@ -3,150 +3,38 @@
 {% comment %} <html>
 <head>
     <title>Food Marts</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            font-size: 16px;
-            line-height: 1.5;
-            color: #333;
-            background-color: #f9f9f9;
-        }
-        nav {
-            background-color: #337ab7;
-            padding: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin-right: 20px;
-        }
-
-        nav a:hover {
-            color: #ccc;
-        }
-
-        /* Centered Links */
-
-       .a {
-            display: flex;
-            justify-content: center;
-        }
-
-        body {
-            padding: 20px;
-        }
-        /* Global Styles */
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            font-size: 16px;
-            line-height: 1.5;
-            color: #333;
-            background-color: #f9f9f9;
-        }
-
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        li {
-            margin-bottom: 20px;
-            padding: 20px;
-            border-bottom: 1px solid #ddd;
-        }
-
-        li:last-child {
-            border-bottom: none;
-        }
-
-        h2 {
-            margin-top: 0;
-        }
-
-        p {
-            margin-bottom: 10px;
-        }
-
-        /* Add some visual hierarchy */
-
-        h1 {
-            font-size: 24px;
-        }
-
-        h2 {
-            font-size: 18px;
-        }
-
-        /* Add some color */
-
-        h1, h2 {
-            color: #337ab7;
-        }
-
-        li {
-            padding: 20px;
-        }
-    </style>
-</head>
+    </head>
 <body>
     <nav>
         <a class='a' href="Annavinna">Annavinna</a>
         <a class='a' href="Annavinna">Search</a>
     </nav> {% endcomment %}
     {% block content %}
-    <div class="relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-96 ml-5">
+    <div class="">
         <div class="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white bg-clip-border h-50">
         </div>
-        <div class="p-6">
+        <div class="">
           <div class="flex items-center justify-between mb-2">
-            <p class="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900">
-               Foodmart
-            </p>
+            <h1 class="text-3xl font-['Kode_mono'] font-bold leading-relaxed text-amber-100 text-center w-full bg-amber-900">
+               Food Providers
+            </h1>
           </div>
-          <ul>
+          <ul class="flex w-full flex-wrap gap-5 justify-center mt-5 font-['Roboto']">
             {% for foodmart in foodmarts %}
-                <li>
-                    <h2 class="font-bold">{{ foodmart.name }}</h2>
-                    <p>Description: {{ foodmart.description }}</p>
-                    <p>Pincode: {{ foodmart.pincode }}</p>
+                <li class="w-[300px] bg-amber-50 py-5 rounded-xl text-center shadow-xl text-amber-900">
+                    <h2 class="font-bold text-xl mb-5 bg-amber-900 py-2 text-amber-100">{{ foodmart.name }}</h2>
+                    <p><span class="font-semibold">Description</span>: {{ foodmart.description }}</p>
+                    <p><span class="font-semibold">Pincode</span>: {{ foodmart.pincode }}</p>
                     {% if foodmart.lat and foodmart.lon %}
-                        <p>Address:{{foodmart.address}}</p>
-                        <p>Call:{{foodmart.phone_number}}</p>
-                        <p>Quantity:{{foodmart.quantity}}</p>
+                        <p><span class="font-semibold">Address</span>:{{foodmart.address}}</p>
+                        <p><span class="font-semibold">Call</span>:{{foodmart.phone_number}}</p>
+                        <p><span class="font-semibold">Quantity</span>:{{foodmart.quantity}}</p>
                     {% endif %}
                 </li>
+                {% endfor %}
         </ul>
-        {% endfor %}
         </div>
         <div class="p-6 pt-0">
-          <button
-            class="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg shadow-gray-900/10 hover:shadow-gray-900/20 focus:opacity-[0.85] active:opacity-[0.85] active:shadow-none block w-full bg-blue-gray-900/10 text-blue-gray-900 shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100"
-            type="button">
-            Add to Cart
-          </button>
         </div>
       </div>
     {% endblock %}
